@@ -5,7 +5,7 @@ import os
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 ASSETS_DIR = os.path.join(BASE_DIR, 'assets')
 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'tawun-secret-key-2026')
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # لكسر الكاش بعد تحديث الأصول: ASSET_VERSION=2 أو تاريخ النشر
 ASSET_VERSION = os.environ.get('ASSET_VERSION', '1')
 DEBUG = True

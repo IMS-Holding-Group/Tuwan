@@ -163,7 +163,7 @@ def _migrate_schema(cursor):
 def seed_default_users(password_hash_fn):
     conn = get_db_connection()
     cursor = conn.cursor()
-    default_password = password_hash_fn('123456')
+    default_password = password_hash_fn('')
     
     if not cursor.execute('SELECT id FROM users WHERE email = ?', ('student@tawun.com',)).fetchone():
         cursor.execute(
@@ -314,7 +314,7 @@ def seed_default_applicants(cursor, password_hash_fn):
         if not cursor.execute('SELECT id FROM users WHERE email = ?', (email,)).fetchone():
             cursor.execute(
                 'INSERT INTO users (name, email, password, phone, role, department) VALUES (?, ?, ?, ?, ?, ?)',
-                (name, email, password_hash_fn('123456'), phone, 'student', department)
+                (name, email, password_hash_fn(''), phone, 'student', department)
             )
             user_id = cursor.lastrowid
             cursor.execute(
